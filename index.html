@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<script type="text/javascript" src="./jquery-1.9.0.js"></script>
+		<title>Test session problem</title>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#callSession').click(function(){
+					$('.blink').fadeOut(300).fadeIn(300);
+					$.ajax({
+						url: "server_session.php"
+					}).done(function() {
+						console.log('Ajax request for session script done.');
+					});
+				});
+				$('#callNoSession').click(function(){
+					$('.blink').fadeOut(300).fadeIn(300);
+					$.ajax({
+						url: "server_no_session.php"
+					}).done(function() {
+						console.log('Ajax request for no session script done.');
+					});
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<p>We now -and it is not a new thing- develop applications depend on Ajax up to %100 But when a web page sends two or more Ajax requests you find them take mush time and maybe finish almost in the same time and here we are trying to test that problem.</p>
+
+		<p>Here we created two buttons call server side PHP scripts both have use sleep(5); but one of them have session_start(); and the other have not.</p>
+
+		<p>When you click the one without session may times, it will send many request to the server but the result will come with out blocking each other.</p>
+
+		<p>The other button the one calles file starts with session_start() which will lock the session file on the server for that user so each request made from that button will wait for the previous ones.</p>
+
+		<p class="blink">Check the console for result</p>
+
+		<p>More info in my blog post <a href="http://eslam.me/blog/php-session-locks-how-to-prevent-blocking-ajax-requests/">Does your Ajax requests take long time? it's PHP session locking problem</a>.</p>
+		
+		<button type="button" id="callSession">Call Session</button>
+		<button type="button" id="callNoSession">Call no Session</button>
+		<br><br><br>
+		<a href="http://eslam.me">Created by Eslam Mahmoud</a>
+	</body>
+</html>
