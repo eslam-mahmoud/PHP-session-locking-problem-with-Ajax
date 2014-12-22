@@ -8,19 +8,40 @@
 					$('.blink').fadeOut(300).fadeIn(300);
 					$.ajax({
 						url: "server_session.php"
-					}).done(function() {
+					}).done(function(msg) {
 						console.log('Ajax request for session script done.');
+						console.log(msg);
 					});
 				});
 				$('#callNoSession').click(function(){
 					$('.blink').fadeOut(300).fadeIn(300);
 					$.ajax({
 						url: "server_no_session.php"
-					}).done(function() {
+					}).done(function(msg) {
 						console.log('Ajax request for no session script done.');
+						console.log(msg);
+					});
+				});
+				$('#callSessionRegenerateId').click(function(){
+					$('.blink').fadeOut(300).fadeIn(300);
+					$.ajax({
+						url: "session_regenerate_id.php"
+					}).done(function(msg) {
+						console.log('Ajax request for session regenerate id script done.');
+						console.log(msg);
+					});
+				});
+				$('#callSessionWriteClose').click(function(){
+					$('.blink').fadeOut(300).fadeIn(300);
+					$.ajax({
+						url: "session_write_close.php"
+					}).done(function(msg) {
+						console.log('Ajax request for session write close script done.');
+						console.log(msg);
 					});
 				});
 			});
+
 		</script>
 	</head>
 
@@ -37,8 +58,10 @@
 
 		<p>More info in my blog post <a href="http://eslam.me/blog/php-session-locks-how-to-prevent-blocking-ajax-requests/">Does your Ajax requests take long time? it's PHP session locking problem</a>.</p>
 		
-		<button type="button" id="callSession">Call Session</button>
 		<button type="button" id="callNoSession">Call no Session</button>
+		<button type="button" id="callSession">Call Session</button>
+		<button type="button" id="callSessionRegenerateId">Call session regenerate id</button>
+		<button type="button" id="callSessionWriteClose">Call session write close</button>
 		<br><br><br>
 		<a href="http://eslam.me">Created by Eslam Mahmoud</a>
 	</body>
