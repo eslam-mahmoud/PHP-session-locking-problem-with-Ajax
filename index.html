@@ -40,6 +40,25 @@
 						console.log(msg);
 					});
 				});
+				$('#callSessionWriteCloseThenOpen').click(function(){
+					$('.blink').fadeOut(300).fadeIn(300);
+					$.ajax({
+						url: "session_write_close_then_open.php"
+					}).done(function(msg) {
+						console.log('Ajax request for session write close then open again script done.');
+						console.log(msg);
+					});
+				});	
+				$('#callGetSessionVar').click(function(){
+					$('.blink').fadeOut(300).fadeIn(300);
+					$.ajax({
+						url: "get_session_var.php"
+					}).done(function(msg) {
+						console.log('Ajax request for session write close then open again script done.');
+						console.log(msg);
+					});
+				});	
+
 			});
 
 		</script>
@@ -62,6 +81,8 @@
 		<button type="button" id="callSession">Call Session</button>
 		<button type="button" id="callSessionRegenerateId">Call session regenerate id</button>
 		<button type="button" id="callSessionWriteClose">Call session write close</button>
+		<button type="button" id="callSessionWriteCloseThenOpen">Call session write close then open again</button>
+		<button type="button" id="callGetSessionVar">Call to get session var</button>
 		<br><br><br>
 		<a href="http://eslam.me">Created by Eslam Mahmoud</a>
 	</body>
